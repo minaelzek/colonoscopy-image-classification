@@ -55,3 +55,29 @@ button:hover {
     font-size: 16px;
     margin: 5px 0;
 }
+
+.error-message {
+    color: red;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.example-images {
+    margin-top: 30px;
+}
+
+.example {
+    display: inline-block;
+    margin: 10px;
+    text-align: center;
+}
+
+.example img {
+    max-width: 100px;
+    border-radius: 8px;
+}
+
+.example p {
+    font-size: 14px;
+    margin-top: 5px;
+}

@@ -5,14 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Colonoscopy Image Classification</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        function showLoadingIndicator() {
+            document.getElementById('loading-indicator').style.display = 'block';
+        }
+    </script>
 </head>
 <body>
     <div class="container">
         <h1>Colonoscopy Image Classification</h1>
-        <form action="/" method="post" enctype="multipart/form-data">
+        <form action="/" method="post" enctype="multipart/form-data" onsubmit="showLoadingIndicator()">
             <input type="file" name="file" accept="image/*" required>
             <button type="submit">Upload Image</button>
         </form>
+        <div id="loading-indicator" style="display: none;">Processing...</div>
         {% if classification %}
             <div class="result">
                 <h2>Classification Result</h2>
@@ -20,6 +26,22 @@
                 <p>Confidence: {{ confidence }}%</p>
             </div>
         {% endif %}
+        {% if classification == "Error" %}
+            <div class="error-message">
+                <p>{{ confidence }}</p>
+            </div>
+        {% endif %}
+        <div class="example-images">
+            <h2>Example Images</h2>
+            <div class="example">
+                <img src="{{ url_for('static', filename='example_normal.jpg') }}" alt="Normal">
+                <p>Normal</p>
+            </div>
+            <div class="example">
+                <img src="{{ url_for('static', filename='example_abnormal.jpg') }}" alt="Abnormal">
+                <p>Abnormal</p>
+            </div>
+        </div>
     </div>
 </body>
 </html>
