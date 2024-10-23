@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colonoscopy Image Classification</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Colonoscopy Image Classification</h1>
+        <form action="/" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept="image/*" required>
+            <button type="submit">Upload Image</button>
+        </form>
+        {% if classification %}
+            <div class="result">
+                <h2>Classification Result</h2>
+                <p>Classification: {{ classification }}</p>
+                <p>Confidence: {{ confidence }}%</p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
